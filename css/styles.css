@@ -1,0 +1,417 @@
+/* Kemoy Kayan — Connect Hub
+   Palette aligned with diaspora.kemoykayan.com */
+
+:root {
+  --cream: #f2efe0;
+  --paper: #fffdf6;
+  --linen: #dad7ce;
+  --sand: #bdb7aa;
+  --taupe: #746f64;
+  --stone: #49473f;
+  --ink: #000000;
+  --olive: #3a4a26;
+  --olive-deep: #27331a;
+  --gold: #c7a96c;
+  --gold-deep: #a98235;
+
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+
+  --max-width: 36rem;
+  --radius-pill: 999px;
+  --radius-card: 1px;
+  --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.06);
+  --transition: 0.28s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--stone);
+  background-color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper grain */
+.texture-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.texture-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding: 3.5rem 1.5rem 4rem;
+  }
+}
+
+.hub {
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+/* Logo mark */
+.hub__logo {
+  display: block;
+  width: min(11rem, 72vw);
+  height: auto;
+  margin: 0 auto 2rem;
+}
+
+/* Editorial card shell */
+.hub__card {
+  background: var(--paper);
+  border: 1px solid rgba(199, 169, 108, 0.35);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem 1.5rem 2.25rem;
+}
+
+@media (min-width: 480px) {
+  .hub__card {
+    padding: 2.5rem 2rem 2.75rem;
+  }
+}
+
+/* Portrait — image includes gold offset frame */
+.portrait {
+  width: 10.5rem;
+  margin: 0 auto 1.75rem;
+}
+
+.portrait__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Profile copy */
+.profile__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.profile__eyebrow-line {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.profile__name {
+  margin: 0 0 1rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 8vw, 2.85rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--ink);
+}
+
+.profile__bio {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  text-align: center;
+  color: var(--stone);
+}
+
+.profile__location {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--taupe);
+}
+
+.divider {
+  width: 3rem;
+  height: 1px;
+  margin: 1.75rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 20%,
+    var(--gold) 80%,
+    transparent
+  );
+}
+
+/* Primary CTAs */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 2rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.btn--primary {
+  background: var(--olive);
+  color: var(--cream);
+}
+
+.btn--primary:hover {
+  background: var(--olive-deep);
+  box-shadow: 0 10px 28px rgba(58, 74, 38, 0.22);
+}
+
+.btn--gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.btn--gold:hover {
+  background: var(--gold-deep);
+  color: var(--paper);
+}
+
+.btn--outline {
+  background: var(--paper);
+  border-color: var(--linen);
+  color: var(--stone);
+}
+
+.btn--outline:hover {
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+.btn--pending {
+  opacity: 0.72;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-note {
+  margin: -0.35rem 0 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--taupe);
+}
+
+/* Context card */
+.context-card {
+  margin-bottom: 2rem;
+  padding: 1.35rem 1.25rem;
+  background: rgba(242, 239, 224, 0.55);
+  border: 1px solid rgba(218, 215, 206, 0.9);
+}
+
+.context-card__title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.context-card__copy {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--stone);
+}
+
+.context-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--olive);
+  border-bottom: 1px solid rgba(199, 169, 108, 0.5);
+  padding-bottom: 0.15rem;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.context-card__link:hover {
+  color: var(--olive-deep);
+  border-color: var(--gold);
+}
+
+.context-card__link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Event note — enable by removing .is-hidden */
+.event-note {
+  margin-bottom: 1.75rem;
+  padding: 0.9rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--stone);
+  background: rgba(199, 169, 108, 0.12);
+  border: 1px solid rgba(199, 169, 108, 0.35);
+}
+
+.event-note.is-hidden {
+  display: none;
+}
+
+.event-note strong {
+  font-weight: 600;
+  color: var(--olive);
+}
+
+/* Connect section */
+.connect__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.connect__heading-line {
+  flex: 1;
+  height: 1px;
+  background: var(--linen);
+}
+
+.connect__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.connect__item + .connect__item {
+  border-top: 1px solid rgba(218, 215, 206, 0.85);
+}
+
+.connect__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--stone);
+  transition: color var(--transition);
+}
+
+.connect__link:hover {
+  color: var(--olive);
+}
+
+.connect__link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.connect__link[target="_blank"]::after {
+  content: "↗";
+  font-size: 0.85em;
+  color: var(--taupe);
+}
+
+/* Footer */
+.hub__footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(218, 215, 206, 0.85);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--taupe);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
