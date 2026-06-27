@@ -11,7 +11,7 @@
  */
 const SITE_CONFIG = {
   mailchimpConnectedSites: true,
-  mailchimpUrl: null,
+  mailchimpUrl: "https://mailchi.mp/dd7799765735/kemoy-kayan-join-the-list",
   showEventNote: false,
   eventName: "Jamaica International Beauty Expo",
 };
