@@ -1,11 +1,16 @@
 /**
- * Site configuration — update MAILCHIMP_URL when your signup page is ready.
+ * Site configuration
+ *
+ * Mailchimp newsletter signup (pick one):
+ *   - mailchimpConnectedSites: true — popup handled by the mcjs script in index.html
+ *   - mailchimpUrl: "https://..." — direct link to a hosted signup page
  *
  * For beauty expo mode:
  *   1. Set SHOW_EVENT_NOTE to true
  *   2. Set EVENT_NAME to the event name
  */
 const SITE_CONFIG = {
+  mailchimpConnectedSites: true,
   mailchimpUrl: null,
   showEventNote: false,
   eventName: "Jamaica International Beauty Expo",
@@ -16,16 +21,27 @@ const SITE_CONFIG = {
   const note = document.getElementById("mailchimp-note");
   const eventNote = document.getElementById("event-note");
   const eventNameEl = document.getElementById("event-name");
+  const mailchimpReady =
+    SITE_CONFIG.mailchimpConnectedSites || SITE_CONFIG.mailchimpUrl;
 
-  if (SITE_CONFIG.mailchimpUrl) {
+  if (mailchimpReady) {
     mailchimpLinks.forEach(function (link) {
-      link.href = SITE_CONFIG.mailchimpUrl;
+      if (SITE_CONFIG.mailchimpUrl) {
+        link.href = SITE_CONFIG.mailchimpUrl;
+        if (
+          link.id === "mailchimp-btn-primary" ||
+          link.id === "mailchimp-btn-secondary"
+        ) {
+          link.setAttribute("target", "_blank");
+          link.setAttribute("rel", "noopener noreferrer");
+        }
+      } else {
+        link.href = "#";
+        link.removeAttribute("target");
+        link.removeAttribute("rel");
+      }
       link.removeAttribute("aria-disabled");
       link.classList.remove("btn--pending");
-      if (link.id === "mailchimp-btn-primary" || link.id === "mailchimp-btn-secondary") {
-        link.setAttribute("target", "_blank");
-        link.setAttribute("rel", "noopener noreferrer");
-      }
     });
     if (note) note.hidden = true;
   } else {

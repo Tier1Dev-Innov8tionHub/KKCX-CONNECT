@@ -14,13 +14,22 @@ Or open `index.html` via any static file server.
 
 ## Mailchimp setup
 
-When your Mailchimp signup URL is ready, edit `js/config.js`:
+**Connected Sites popup (current setup):** The Mailchimp `mcjs` script in `index.html` loads the signup popup. In `js/config.js`, keep:
 
 ```javascript
+mailchimpConnectedSites: true,
+```
+
+Configure popup timing and triggers in your Mailchimp audience settings. The mailing list buttons stay active; the script handles the form.
+
+**Hosted signup page (alternative):** Set a direct URL instead:
+
+```javascript
+mailchimpConnectedSites: false,
 mailchimpUrl: "https://your-mailchimp-url",
 ```
 
-Both "Join the Mailing List" and "Join the list for updates" will link there automatically.
+Both "Join the Mailing List" and "Join the list for updates" will open that URL in a new tab.
 
 ## Beauty expo mode
 
